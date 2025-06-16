@@ -18,6 +18,9 @@
        
     </div>
 }
+<div>
+   Bienvenu au quiz {{slug}}
+</div>
     @if (mode=='quiz') {
     <div>
     @for (q of data.questions; track $index) {
@@ -32,7 +35,8 @@
      @if (mode=='review') {
     <div>
         <h1>Review</h1>
-         @for (q of data.questions; track $index) {
+        {{data | quiz:'select'}}
+         @for (q of data.questions ; track $index) {
 
         <app-question [mode]="'review'" [qdata]="q" ></app-question>
         
@@ -43,13 +47,30 @@
       @if (mode=='submit') {
     <div>
         <h1>Submit</h1>
-        <h4>Votre score est : {{data.score()}}%</h4>
+        <h4>Votre score est : {{data.score() | percent}}</h4>
        
+        
 
-            <div *ngFor="let q of data.questions">
+        <div>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">All</label>
+
+    <input type="checkbox" [(ngModel)]="x" class="btn-check" id="btncheck2" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck2">Correct</label>
+
+    <input [(ngModel)]="x"  type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck3">Incorrect</label>
+    </div>
+        </div>
+        <p>x:  {{x}}</p>
+        {{data | quiz:x?'correct':'all'}}
+            <div *ngFor="let q of data | quiz:x?'correct':'all' ">
         <app-question [mode]="'submit'" [qdata]="q" ></app-question>
         </div>
     
         </div>
+        
     }
+   
 </div>

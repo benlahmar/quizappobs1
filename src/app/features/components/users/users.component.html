@@ -1,0 +1,30 @@
+<p>users works!</p>
+<div class="container">
+    <h1>Users List</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex flex-wrap justify-content-start">
+                <!-- User cards will be rendered here -->
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+       
+@for (u of users; track $index) {
+    <div class="col-md-4">
+       
+    <div class="card" style="width: 18rem; margin: 10px;">
+        <img [src]="u.avatar" class="card-img-top" alt="{{u.name}}">
+        <div class="card-body">
+        <h5 class="card-title">{{u.name}}</h5>
+        <p class="card-text">Email: {{u.email}}</p>
+        <p class="card-text">Role: {{u.username}}</p>
+        <a href="#" class="btn btn-primary">View Profile</a>
+        </div>
+    </div>
+    </div>
+}
+        </div>      
+
+ 
+</div>

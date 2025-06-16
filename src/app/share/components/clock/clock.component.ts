@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ColorDirective } from '../../directives/color.directive';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-clock',
-  imports: [ColorDirective],
+  imports: [DatePipe, ColorDirective],
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.css'
 })
