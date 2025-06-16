@@ -1,0 +1,42 @@
+<div class=" container row">
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       Configuration
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        
+        <div class="form-check form-switch">
+  <input [(ngModel)]="dataconfig.allowReview" (change)="test()" class="form-check-input" aria-checked="true" type="checkbox" role="switch" id="switchCheckChecked" >
+  <label class="form-check-label" for="switchCheckChecked">Allow Review</label>
+</div>
+<div class="form-check form-switch">
+  <input [(ngModel)]="dataconfig.allowBack" (change)="test()" class="form-check-input" aria-checked="true" type="checkbox" role="switch" id="switchCheckChecked" >
+  <label class="form-check-label" for="switchCheckChecked">Allow Back</label>
+</div>
+<div class="form-check form-switch">
+  <input [(ngModel)]="dataconfig.autoMove" (change)="test()" class="form-check-input" aria-checked="true" type="checkbox" role="switch" id="switchCheckChecked" >
+  <label class="form-check-label" for="switchCheckChecked">Auto Move</label>
+</div>
+<div class="row g-3 align-items-center">
+  
+  <div class="col-auto">
+    <input [(ngModel)]="dataconfig.duration" type="number" id="nb" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
+    <label for="nb" class="col-form-label">Duration</label>
+  </div>
+ 
+</div>
+<div class="form-check form-switch">
+  <input [(ngModel)]="dataconfig.showClock" (change)="test()" class="form-check-input" aria-checked="true" type="checkbox" role="switch" id="switchCheckChecked" >
+  <label class="form-check-label" for="switchCheckChecked">show Clock</label>
+</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>

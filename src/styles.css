@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.abcx{
+    box-shadow: 5px 5px 5px  5px;
+    margin: 5px;
+    background-color: beige;
+    transform: rotateY(360deg);
+    transform-style: preserve-3d;
+    transition: all 8s;
+}

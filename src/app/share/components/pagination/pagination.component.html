@@ -1,0 +1,11 @@
+<nav aria-label="Page navigation example">
+        <ul class="pagination">
+            
+            <li class="page-item"><a class="page-link"  (click)="send(p-elebypage)"  [hidden]="p==0 || !backdisplay">Previous</a></li>
+            
+            <li class="page-item"><a class="page-link" (click)="send(0)">1</a></li>
+            <li class="page-item"><a class="page-link" (click)="send((elebypage-1)*2-1)">2</a></li>
+            <li class="page-item"><a class="page-link" (click)="send((elebypage-1)*3)">3</a></li>
+            <li class="page-item"><a class="page-link" (click)="send(p+elebypage)" [hidden]="p==total-1">Next</a></li>
+        </ul>
+</nav>

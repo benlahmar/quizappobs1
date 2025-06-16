@@ -1,0 +1,47 @@
+<div>
+    <button type="button" (click)="changemode('quiz')" class="btn btn-outline-primary">Quiz</button>
+<button type="button" (click)="changemode('review')" class="btn btn-outline-secondary">Review</button>
+<button type="button" (click)="changemode('submit')" class="btn btn-outline-success">Submit</button>
+</div>
+
+
+<div class="container">
+    <h1>{{data.name}}</h1>
+    <h3>{{data.description}}</h3>
+    @if(mode=='quiz'){
+    @for (q of data.questions; track $index) {
+        @if($index==curentquestion){
+        <div [hidden]="$index!==curentquestion">
+          {{$index+1}}.  {{q.name}}
+          @for (o of q.options; track $index) {
+            <div>
+            <input type="checkbox" (change)="choose(o)"  [(ngModel)]="o.isSelected" [id]="o.id" /> {{o.name}}
+            </div>
+          }   
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" (click)="goTo(curentquestion-1)" [hidden]="curentquestion==0">Previous</a></li>
+            <li class="page-item"><a class="page-link" (click)="goTo(0)">1</a></li>
+            <li class="page-item"><a class="page-link" (click)="goTo(1)">2</a></li>
+            <li class="page-item"><a class="page-link" (click)="goTo(2)">3</a></li>
+            <li class="page-item"><a class="page-link" (click)="goTo(curentquestion+1)" [hidden]="curentquestion>=data.questions.length-1">Next</a></li>
+        </ul>
+        </nav>
+        </div>
+    }
+    }
+}
+</div>
+
+@if(mode=='review')
+{
+    <div>
+        @for (q of data.questions; track $index) {  
+             
+        <div [class]="!q.isnotselected()?'alert alert-success':'alert alert-danger'" role="alert">
+          {{$index+1}}.  {{q.name}}        
+        </div>    
+        
+    }
+    </div>
+}

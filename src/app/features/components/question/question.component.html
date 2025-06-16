@@ -1,0 +1,13 @@
+<div [class]=" cls()">
+    {{qdata.name}}
+    @if(mode!=='review'){
+    @for (o of qdata.options; track $index) {
+        <app-option [mode]="mode" [doption]="o" ></app-option>
+    }
+     @if(mode==='submit'){
+    <div  [class]="qdata.isCorrect()?'alert alert-warning':'alert alert-danger'" role="alert">
+        Votre reponse est {{qdata.isCorrect()?' correct':' incorrect'}}
+    </div>
+}
+}
+</div>

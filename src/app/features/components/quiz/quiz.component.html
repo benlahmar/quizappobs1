@@ -1,0 +1,55 @@
+<div class="container">
+<app-quiz-config [dataconfig]="data.config"></app-quiz-config>
+
+<div class="btn-group container" role="group" aria-label="Basic mixed styles example">
+  @if (mode!=='submit'){
+    <button type="button" class="btn btn-danger" (click)="changemod('quiz')">Quiz</button>
+  <button type="button" class="btn btn-warning" (click)="changemod('review')" [hidden]="!data.config.allowReview">Review</button>
+  }
+  <button type="button" class="btn btn-success" (click)="changemod('submit')">Submit</button>
+</div>
+    <h1 [appColor]="'red'">{{data.name}}</h1>
+    <h5>{{data.description}}</h5>
+    @if(data.config.showClock)
+    {
+    <div >
+      <p> Duree:  {{duree}}</p>
+        <app-clock></app-clock>
+       
+    </div>
+}
+    @if (mode=='quiz') {
+    <div>
+    @for (q of data.questions; track $index) {
+        @if ($index>=currentquestion && $index<currentquestion+epage) {
+            {{$index}}
+        <app-question [mode]="mode" [qdata]="q" ></app-question>
+        }
+    }
+    <app-pagination [backdisplay]="data.config.allowBack" [elebypage]="epage" [total]="data.questions.length" (notif)="recuperer($event)"></app-pagination>
+    </div>
+    }
+     @if (mode=='review') {
+    <div>
+        <h1>Review</h1>
+         @for (q of data.questions; track $index) {
+
+        <app-question [mode]="'review'" [qdata]="q" ></app-question>
+        
+    }
+        </div>
+    }
+
+      @if (mode=='submit') {
+    <div>
+        <h1>Submit</h1>
+        <h4>Votre score est : {{data.score()}}%</h4>
+       
+
+            <div *ngFor="let q of data.questions">
+        <app-question [mode]="'submit'" [qdata]="q" ></app-question>
+        </div>
+    
+        </div>
+    }
+</div>

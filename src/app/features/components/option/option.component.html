@@ -1,0 +1,8 @@
+
+
+<div class="form-check">
+  <input [disabled]="mode=='submit'" (change)="go()" class="form-check-input" [(ngModel)]="doption.isSelected" type="checkbox" value=""  [id]="doption.id"  >
+  <label class="form-check-label" for="checkChecked">
+   {{doption.name}}
+  </label>
+</div>
