@@ -14,9 +14,11 @@ export class Question
         this.questionTypeId=data.questionType;
 
         this.options=[];
+        if(data.options!==undefined){
         data.options.forEach((o:Option) => {
             this.options.push(new Option(o));
         });
+    }
     }
 
     isnotselected()

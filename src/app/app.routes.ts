@@ -23,6 +23,37 @@ export const routes: Routes = [
     },
     {
         path: 'users',
-        loadComponent: () => import('./features/components/users/users.component').then(m => m.UsersComponent)
+        loadComponent: () => import('./features/components/users/users.component').then(m => m.UsersComponent),
+       
+    }
+    ,
+     {
+        path: 'users/:id/profile',
+        loadComponent: () => import('./features/components/user-profile/user-profile.component').then(m => m.UserProfileComponent)
+    }
+    ,{
+        path:'user/:id',
+       // loadComponent: () => import('./features/components/user2/user2.component').then(m => m.User2Component),
+         children: [
+            {
+                path: '',
+                redirectTo: 'settings',
+                pathMatch: 'full'
+            },
+            {
+                path: 'profile2',
+                loadComponent: () => import('./features/components/user2/user2.component').then(m =>m.User2Component)
+
+            },
+            {
+                path:'settings',
+                loadComponent: () => import('./share/components/about/about.component').then(m => m.AboutComponent)
+            }
+        ]
+    },
+    {
+        path:'quiz/add/form',
+        loadComponent: () => import('./features/components/quiz-form/quiz-form.component').then(m => m.QuizFormComponent)
+
     }
     ];

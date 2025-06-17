@@ -1,0 +1,21 @@
+<fieldset>
+    <legend>Question</legend>
+    <form [formGroup]="qfrm">
+        <div class="mb-3">
+          <label for="id" class="form-label">ID</label>
+          <input type="number" class="form-control" id="id" formControlName="id">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label for="questionTypeId" class="form-label">Question Type ID</label>
+            <input type="number" class="form-control" id="questionTypeId" formControlName="questionTypeId">
+          </div>
+          <div>
+            <app-option-form (notif)="getoption($event)"></app-option-form>
+          </div>
+          <button  type="button" (click)="send()" class="btn btn-success">add Question</button>
+      </form>
+</fieldset>

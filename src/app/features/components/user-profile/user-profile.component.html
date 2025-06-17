@@ -1,0 +1,47 @@
+<div>
+    <h1>User Profile</h1>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                User Information 
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{user.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Email: {{user.email}}</li>
+                    <li class="list-group-item">Phone: {{user.phone}}</li>
+                    <li class="list-group-item">Website: {{user.website}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-header bg-info text-white">
+                Address
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Street: {{user.address.street}}</li>
+                    <li class="list-group-item">Suite: {{user.address.suite}}</li>
+                    <li class="list-group-item">City: {{user.address.city}}</li>
+                    <li class="list-group-item">Zipcode: {{user.address.zipcode}}</li>
+                    <li class="list-group-item">
+                        Geo: Lat: {{user.address.geo.lat}}, Lng: {{user.address.geo.lng}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-header bg-secondary text-white">
+                Company
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: {{user.company.name}}</li>
+                    <li class="list-group-item">Catch Phrase: {{user.company.catchPhrase}}</li>
+                    <li class="list-group-item">BS: {{user.company.bs}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> 

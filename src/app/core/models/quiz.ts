@@ -11,18 +11,22 @@ export class Quiz
     config:QuizConfig;
 
 
-    constructor(data:any)
+    constructor(data:any )
     {
         this.id= data.id;
         this.name=data.name;
         this.description=data.description;
 
+
         this.questions=[];
+       if(data.questions!==undefined){
         data.questions.forEach((q:Question) => {
             this.questions.push(new Question(q));
         });
+    }
+    if(data.config!==undefined){
         this.config= new QuizConfig(data.config);
-
+    }
 
     }
     score():number
