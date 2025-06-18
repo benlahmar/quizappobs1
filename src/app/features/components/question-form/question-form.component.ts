@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Question } from '../../../core/models/question';
 import { OptionFormComponent } from "../option-form/option-form.component";
 import { Option } from '../../../core/models/option';
+import { QuizFormStateService } from '../../../share/services/quiz-form-state.service';
 
 @Component({
   selector: 'app-question-form',
@@ -17,10 +18,14 @@ data:Question;
   @Output()
   notif=new EventEmitter<any>();
 
+  constructor(private stateservice:QuizFormStateService) {
+    
+  }
+
   ngOnInit(): void {
     this.qfrm=new FormGroup({
       id:new FormControl(),
-      name:new FormControl(),
+      name:new FormControl('',Validators.required),
       questionTypeId:new FormControl()
     })
     this.data=new Question(this.qfrm.value);
@@ -36,5 +41,11 @@ data:Question;
   getoption(o:Option)
   {
     this.data.options.push(o);
+  }
+  getstate()
+  {
+    console.log('in question component')
+    this.stateservice.change(this.qfrm.valid,'q')
+    console.log(this.stateservice.state)
   }
 }

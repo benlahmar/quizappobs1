@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { QuizComponent } from './features/components/quiz/quiz.component';
 import { AboutComponent } from './share/components/about/about.component';
 import { ListThemeComponent } from './features/components/list-theme/list-theme.component';
+import { guardAuthGuard } from './share/services/guard-auth.guard';
 
 export const routes: Routes = [
     {
@@ -53,7 +54,13 @@ export const routes: Routes = [
     },
     {
         path:'quiz/add/form',
-        loadComponent: () => import('./features/components/quiz-form/quiz-form.component').then(m => m.QuizFormComponent)
+        loadComponent: () => import('./features/components/quiz-form/quiz-form.component').then(m => m.QuizFormComponent),
+        canActivate:[guardAuthGuard]
+
+    },
+    {
+        path:"login",
+        loadComponent: () => import('./share/components/auth-form/auth-form.component').then(m => m.AuthFormComponent)
 
     }
     ];

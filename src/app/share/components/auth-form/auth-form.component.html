@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Authentication Form</div>
+                <div class="card-body">
+                    <form [formGroup]="frm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Login</label>
+                            <input type="text" formControlName="log" class="form-control" id="login" placeholder="Enter login">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" formControlName="pass" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <button type="submit"class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

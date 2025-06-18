@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" formControlName="name">
+          <input type="text" (change)="getstate()" class="form-control" id="name" formControlName="name">
         </div>
         <div class="mb-3">
             <label for="questionTypeId" class="form-label">Question Type ID</label>
@@ -16,6 +16,7 @@
           <div>
             <app-option-form (notif)="getoption($event)"></app-option-form>
           </div>
+          <p>{{qfrm.status}}</p>
           <button  type="button" (click)="send()" class="btn btn-success">add Question</button>
       </form>
 </fieldset>

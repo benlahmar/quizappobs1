@@ -14,13 +14,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" formControlName="name">
+                        <input type="text" (change)="sendstate()" class="form-control" id="name" formControlName="name">
+                        <div class="alert alert-danger" [hidden]="ofrm.controls['name'].valid">attention</div>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="isAnswer" formControlName="isAnswer">
                         <label class="form-check-label" for="isAnswer">Is Answered</label>
                     </div>
-                    <button type="button" (click)="send()" class="btn btn-primary">add option</button>
+                    <p>{{ofrm.status}}</p>
+                    <button type="button" [disabled]="!ofrm.valid" (click)="send()" class="btn btn-primary">add option</button>
                 </form>
             </div>
         </div>

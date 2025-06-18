@@ -1,7 +1,10 @@
 
 <div class="container">
     <div class="row">
-   <form [formGroup]="frm">
+        <input class="btn btn-warning" type="button" value="change value" (click)="changevalue('hi everyOne')" /> <span>{{value}}</span>
+    </div>
+    <div class="row">
+   <form [formGroup]="frm" (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label for="id" class="form-label">ID:</label>
     <input type="number" formControlName="id" class="form-control" id="id" >
@@ -15,7 +18,7 @@
     <input type="text" formControlName="description" class="form-control" id="des">
   </div>
   <app-question-form (notif)="getquestion($event)"></app-question-form>
-  <button [disabled]="!frm.valid" type="submit" class="btn btn-primary">Submit</button>
+  <button [disabled]="!frm.valid"  type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <hr/>

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Quiz } from '../../../core/models/quiz';
 import { Question } from '../../../core/models/question';
 import { QuestionFormComponent } from "../question-form/question-form.component";
+import { SharedDataService } from '../../../share/services/shared-data.service';
 
 @Component({
   selector: 'app-quiz-form',
@@ -15,6 +16,9 @@ export class QuizFormComponent implements OnInit{
    
   data:Quiz;
   frm:FormGroup;
+  value:string;
+  constructor(private shared:SharedDataService){}
+
   ngOnInit(): void {
     
    this.frm=new FormGroup({
@@ -24,11 +28,21 @@ export class QuizFormComponent implements OnInit{
    
    });
    this.data=new Quiz(this.frm.value);
+  this.shared.message$.subscribe(s=>{
+    this.value=s;
+  })
+
   }
+
+changevalue(ss:string)
+{
+  this.shared.updateMessage(ss);
+}
+
   onSubmit()
   {
     
-    //send
+    //send to back-end
   }
 
 
